@@ -5,16 +5,15 @@ import './Item.css';
 const itemSource = {
   //trước khi kéo
   beginDrag(props) {
-    console.log('dragging');
     return props.item;
   },
   //kết thúc kéo
   endDrag(props, monitor, component) {
     if (!monitor.didDrop()) {
-      return;
+      return ;
     }
 
-    return props.handleDrop(props.item.id);
+      return props.ChangeItems(props.item.id);
   }
 }
 

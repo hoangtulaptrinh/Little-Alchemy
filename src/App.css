@@ -16,3 +16,8 @@
   flex-direction: column;
   width: 82%;
 }
+.drop-Target{
+    display: flex;
+    background-image:url(https://littlealchemy.com/img/workspace-background.png);
+    min-height: 303px;
+}

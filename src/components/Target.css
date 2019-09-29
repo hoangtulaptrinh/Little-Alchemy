@@ -1,8 +1,3 @@
-.Target{
-    text-align: center;
-    background-image:url(https://littlealchemy.com/img/workspace-background.png);
-    min-height: 303px;
-}
 .item{
     background-image:url(https://littlealchemy.com/img/library-background.png);
 }

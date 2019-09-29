@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import './Target.css'
 
-import { Container, Row, Col , CardImg, Card} from 'reactstrap';
+import { CardImg, Card} from 'reactstrap';
 
 function collect(connect, monitor) {
   return {
@@ -12,29 +12,30 @@ function collect(connect, monitor) {
   }
 }
 
+const canDropTheTarget = {
+
+  drop(props, monitor, component) {
+    if (monitor.didDrop()) {console.log(1)
+      return;
+    }
+    // khi thả vào component nào thì sẽ lấy đc id của component đó
+    return props.updateIdDrop(props.item.id);
+  },
+}
+
 class Target extends Component {
   render() {
-    const { connectDropTarget, hovered, targetArr } = this.props;
+    const { connectDropTarget, hovered, name , url } = this.props;
     const backgroundColor = hovered ? 'lightgreen' : '';
     return connectDropTarget(
       <div className="Target" style={{ background: backgroundColor }}>
-      <Container>
-        <Row>
-        {
-          targetArr.map((item,index)=>
-          <Col sm="3" key={index}>
             <Card className= 'item'>
-            <p>{item.name}</p>
-            <CardImg top width="100%" src = {item.url} alt="Card image cap" />
+            <p>{name}</p>
+            <CardImg top width="100%" src = {url} alt="Card image cap" />
             </Card>
-          </Col>)
-        }
-        </Row>
-      </Container>
-
         </div>
     );
   }
 }
 
-export default DropTarget('item', {}, collect)(Target);
+export default DropTarget('item', canDropTheTarget , collect)(Target);
