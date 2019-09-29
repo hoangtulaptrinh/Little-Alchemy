@@ -10,10 +10,10 @@ const itemSource = {
   //kết thúc kéo
   endDrag(props, monitor, component) {
     if (!monitor.didDrop()) {
-      return ;
+      return;
     }
 
-      return props.ChangeItems(props.item.id);
+    return props.ChangeItems(props.item.id);
   }
 }
 
@@ -31,10 +31,10 @@ class Item extends Component {
     const opacity = isDragging ? 0 : 1;
 
     return connectDragSource(
-        <div className='Total' style={{ opacity }} >
-          <img alt='Item-img' src={url} />
-          <h3>{name}</h3>
-        </div>
+      <div className='Total' style={{ opacity }} >
+        <img alt='Item-img' src={url} />
+        <h3>{name}</h3>
+      </div>
     );
   }
 }

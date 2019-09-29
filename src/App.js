@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Target from './components/Target'
 import Item from './components/Item'
-import { Container, Row, Col , Button} from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 class App extends Component {
   state = {
     Items: [
@@ -162,7 +162,7 @@ class App extends Component {
         ]
       })
     }
-    if((idDrag === 2 && idDrop === 2)){
+    if ((idDrag === 2 && idDrop === 2)) {
       alert('Oops You need to study chemistry again !');
     }
   }
@@ -200,7 +200,7 @@ class App extends Component {
           <h2>Drop Below Me</h2>
 
           <div className='drop-Target'>
-            <Container>
+            <Container id='Container'>
               <Row>
                 {
                   targetArr.map((item, index) => (
@@ -212,10 +212,11 @@ class App extends Component {
 
               </Row>
             </Container>
+
           </div>
-
-          <Button outline color="danger" onClick ={() => this.reset()}>Reset</Button>{' '}
-
+          <Button outline color="danger" onClick={() => this.reset()}>
+            Study again from the beginning
+          </Button>{' '}
         </div>
 
         <div className="item-container">

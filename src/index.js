@@ -16,9 +16,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 // const store = createStore(myReducer)
 
 ReactDOM.render(
-    <DndProvider backend={HTML5Backend}>
+  <DndProvider backend={HTML5Backend}>
     <App />
-    </DndProvider>,
+  </DndProvider>,
   document.getElementById('root'));
 
 

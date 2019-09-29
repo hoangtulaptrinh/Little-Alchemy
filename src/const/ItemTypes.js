@@ -1,3 +1,3 @@
 export default {
-    AIR: 'Air',
-  }
+  AIR: 'Air',
+}
