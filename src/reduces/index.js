@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
 
-import List from './List'
+import IdDrop from './IdDrop'
+import Arr from './Arr'
+
 const myReducer = combineReducers({
-  List: List,
+  IdDrop : IdDrop,
+  Arr : Arr,
 });
 
 export default myReducer;

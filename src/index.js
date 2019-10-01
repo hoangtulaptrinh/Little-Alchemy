@@ -4,21 +4,24 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// import { createStore } from 'redux';
-// import myReducer from './reduces/index';
-// import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import myReducer from './reduces/index';
+import { Provider } from 'react-redux'
 //react-dnd
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-// const store = createStore(myReducer)
+const store = createStore(myReducer)
 
 ReactDOM.render(
-  <DndProvider backend={HTML5Backend}>
+    <Provider store={store}>
+      <DndProvider backend={HTML5Backend}>
     <App />
-  </DndProvider>,
+      </DndProvider>
+    </Provider>
+  ,
   document.getElementById('root'));
 
 
