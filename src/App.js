@@ -9,6 +9,7 @@ class App extends Component {
 
   ChangeItems = (idDrag) => {
     this.props.followRecipe(idDrag,this.props.IdDrop);
+    this.props.removeDuplicate();
   }
 
   updateIdDrop = idDrop => {
@@ -17,6 +18,10 @@ class App extends Component {
 
   reset = () => {
     this.props.reset();
+  }
+
+  hardReset = () => {
+    this.props.hardReset();
   }
 
   render() {
@@ -44,6 +49,9 @@ class App extends Component {
 
           </div>
           <Button outline color="danger" onClick={() => this.reset()}>
+            Clear Screen
+          </Button>{' '}
+          <Button outline color="danger" onClick={() => this.hardReset()}>
             Study again from the beginning
           </Button>{' '}
         </div>
@@ -68,8 +76,10 @@ const mapStatetoProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     reset : () => dispatch(actions.reset()),
+    hardReset : () => dispatch(actions.hardReset()),
     updateID : (idDrop) => dispatch(actions.updateID({ idDrop : idDrop })),
     followRecipe : (idDrag,idDrop) => dispatch(actions.followRecipe({ idDrag : idDrag,idDrop : idDrop })),
+    removeDuplicate : () => dispatch(actions.remove_duplicate())
   }
 }
 
