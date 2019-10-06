@@ -25,18 +25,18 @@ const canDropTheTarget = {
 
 class Target extends Component {
   render() {
-    const { connectDropTarget, hovered, name, url ,recipe} = this.props;
+    const { connectDropTarget, hovered, name, url, recipe } = this.props;
     const backgroundColor = hovered ? 'lightgreen' : '';
     return connectDropTarget(
       <div className="Target" >
         <Card className='item' style={{ background: backgroundColor }}>
           <h6>{name}</h6>
-          <CardImg src={url} alt="Card image cap"/>
+          <CardImg src={url} alt="Card image cap" />
           <div className='div-recipe'>
-          <h6>{recipe}</h6>
+            <h6>{recipe}</h6>
           </div>
         </Card>
-        <div className = 'make-beautiful' />
+        <div className='make-beautiful' />
       </div>
     );
   }
