@@ -64,14 +64,17 @@ var myReducer = (state = initialState, action) => {
       var nameDrag = state.Items[action.value.idDrag].name;
       var nameDrop = state.Target[action.value.idDrop].name;
       var e;
-      if (_.has(recipes[_.findIndex(recipes, { [nameDrag]: {} })], [nameDrag, nameDrop]) === true) {
-        e = _.findIndex(elements, function (o) { return o.name === recipes[_.findIndex(recipes, { [nameDrag]: {} })][nameDrag][nameDrop]; });
+      var objDrag = _.find(recipes, {[nameDrag]:{}}); //obj có key là nguyên tố đang kéo ra
+      var objDrop = _.find(recipes, {[nameDrop]:{}}); ////obj có key là nguyên tố bị thả vào
+
+      if (_.has(objDrag, [nameDrag, nameDrop]) === true) {
+        e = _.findIndex(elements, function (o) { return o.name === objDrag[nameDrag][nameDrop]; });
       }
-      if (_.has(recipes[_.findIndex(recipes, { [nameDrag]: {} })], [nameDrag, nameDrop]) === false) {
-        e = _.findIndex(elements, function (o) { return o.name === recipes[_.findIndex(recipes, { [nameDrop]: {} })][nameDrop][nameDrag] });
+      if (_.has(objDrag, [nameDrag, nameDrop]) === false) {
+        e = _.findIndex(elements, function (o) { return o.name === objDrop[nameDrop][nameDrag] });
       }
       if (e === -1) { return state; }
-      if ((recipes[_.findIndex(recipes, { [nameDrag]: {} })][nameDrag][nameDrop]) || (recipes[_.findIndex(recipes, { [nameDrop]: {} })][nameDrop][nameDrag]) === elements[e].name) {
+      if ((objDrag[nameDrag][nameDrop]) || (objDrop[nameDrop][nameDrag]) === elements[e].name) {
         if (action.value.idDrop < 4) {
           state.Items = _.concat(state.Items,
             {
