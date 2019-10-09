@@ -5,10 +5,11 @@ import Item from './components/Item'
 import { Container, Row, Col, Button } from 'reactstrap';
 import * as actions from './actions/index';
 import { connect } from 'react-redux';
+
 class App extends Component {
 
   ChangeItems = (idDrag) => {
-    this.props.followRecipe(idDrag,this.props.IdDrop);
+    this.props.followRecipe(idDrag, this.props.IdDrop);
     this.props.removeDuplicate();
   }
 
@@ -69,18 +70,18 @@ class App extends Component {
 
 const mapStatetoProps = (state) => {
   return {
-    IdDrop : state.IdDrop,
-    Arr : state.Arr,
+    IdDrop: state.IdDrop,
+    Arr: state.Arr,
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    reset : () => dispatch(actions.reset()),
-    hardReset : () => dispatch(actions.hardReset()),
-    updateID : (idDrop) => dispatch(actions.updateID({ idDrop : idDrop })),
-    followRecipe : (idDrag,idDrop) => dispatch(actions.followRecipe({ idDrag : idDrag,idDrop : idDrop })),
-    removeDuplicate : () => dispatch(actions.remove_duplicate())
+    reset: () => dispatch(actions.reset()),
+    hardReset: () => dispatch(actions.hardReset()),
+    updateID: (idDrop) => dispatch(actions.updateID({ idDrop: idDrop })),
+    followRecipe: (idDrag, idDrop) => dispatch(actions.followRecipe({ idDrag: idDrag, idDrop: idDrop })),
+    removeDuplicate: () => dispatch(actions.remove_duplicate())
   }
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps) (App);
+export default connect(mapStatetoProps, mapDispatchToProps)(App);
