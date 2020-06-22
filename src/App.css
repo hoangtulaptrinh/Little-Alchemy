@@ -82,3 +82,11 @@
   margin-top: 5px !important;
   margin-bottom: 0px !important;
 }
+
+.process-bar {
+  position: absolute;
+  height: 50px;
+  background: #a6dcef;
+  z-index: -1;
+  transition: all 700ms ease-in-out;
+}

@@ -13,10 +13,11 @@ import {
 } from "reactstrap";
 
 import "./App.css";
-import Target from "./components/Target";
-import Item from "./components/Item";
-import * as actions from "./actions/index";
 import { connect } from "react-redux";
+import * as actions from "./actions/index";
+import Item from "./components/Item";
+import newElement from "./elements/newElements";
+import Target from "./components/Target";
 
 class App extends Component {
   constructor(props) {
@@ -65,10 +66,17 @@ class App extends Component {
       });
     const sendMessenger = () =>
       this.socket.emit("Client-send-data", inputValue);
+    console.log((Arr.Items.length / newElement.length) * 100);
     return (
       <div className="App">
         <div className="total-target">
           <div className="total-header">
+            <div
+              className="process-bar"
+              style={{
+                width: `${(Arr.Items.length / (newElement.length * 2)) * 100}%`,
+              }}
+            />
             <MessageCircle
               className="icon-mess"
               id="Popover1"
