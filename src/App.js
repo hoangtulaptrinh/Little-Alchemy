@@ -55,7 +55,21 @@ class App extends Component {
         listMessenger: [...this.state.listMessenger, data],
       });
     });
+    document.addEventListener("keydown", this.sendMessage);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.sendMessage);
+  }
+
+  sendMessage = (event) => {
+    if (event.keyCode === 13) {
+      this.socket.emit("Client-send-data", this.state.inputValue);
+      this.setState({
+        inputValue: "",
+      });
+    }
+  };
 
   render() {
     const { inputValue, listMessenger, popoverOpen } = this.state;
@@ -64,9 +78,13 @@ class App extends Component {
       this.setState({
         popoverOpen: !popoverOpen,
       });
-    const sendMessenger = () =>
+    const sendMessenger = () => {
       this.socket.emit("Client-send-data", inputValue);
-    console.log((Arr.Items.length / newElement.length) * 100);
+      this.setState({
+        inputValue: "",
+      });
+    };
+
     return (
       <div className="App">
         <div className="total-target">
@@ -92,7 +110,7 @@ class App extends Component {
             >
               <PopoverHeader>Chat Box</PopoverHeader>
               <PopoverBody>
-                <div className="content-chat">
+                <div id="test-scrollbar-style" className="content-chat">
                   {!!listMessenger.length &&
                     listMessenger.map((item, index) => (
                       <div
